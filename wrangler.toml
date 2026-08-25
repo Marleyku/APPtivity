@@ -1,0 +1,13 @@
+name = "apptivity-public"
+main = "worker/index.js"
+compatibility_date = "2026-08-15"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+# Attach goapptivity.com after DNS + Workers write access are available:
+# [[routes]]
+# pattern = "goapptivity.com/*"
+# zone_name = "goapptivity.com"
