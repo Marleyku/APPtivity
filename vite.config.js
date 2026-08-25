@@ -29,6 +29,7 @@ function publicAuthStub() {
 }
 
 export default defineConfig({
+  base: process.env.GITHUB_PAGES === 'true' ? '/APPtivity/' : '/',
   plugins: [react(), publicAuthStub()],
   server: { port: 5174, host: true },
   preview: { port: 4174, host: true },
