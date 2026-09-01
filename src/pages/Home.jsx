@@ -122,6 +122,29 @@ export default function Home() {
         </div>
       </div>
 
+      <footer
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          width: '100%',
+          padding: '1rem 1.5rem 1.5rem',
+          textAlign: 'center',
+        }}
+      >
+        <Link
+          to={ROUTES.SMS_OPT_IN}
+          style={{
+            color: BUTTON_TEXT,
+            fontSize: '0.8125rem',
+            textDecoration: 'underline',
+            textUnderlineOffset: '2px',
+            textShadow: '0 1px 2px rgba(0,0,0,0.35)',
+          }}
+        >
+          SMS Opt-In
+        </Link>
+      </footer>
+
       {joinPopoverOpen && (
         <div
           role="dialog"

@@ -8,4 +8,5 @@ export const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
   CREATE_USER: '/onboarding/screen-2',
+  SMS_OPT_IN: '/sms-opt-in',
 };

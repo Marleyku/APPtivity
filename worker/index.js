@@ -4,7 +4,7 @@
  * - Allowlists public paths; other navigations → /
  * - /api/auth/* always returns { error: "user not allowed" }
  */
-const ALLOWED_PATHS = new Set(['/', '/login', '/onboarding/screen-2', '/signup']);
+const ALLOWED_PATHS = new Set(['/', '/login', '/onboarding/screen-2', '/signup', '/sms-opt-in']);
 
 function isStaticAsset(pathname) {
   return (
