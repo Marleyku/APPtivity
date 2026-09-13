@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { BRAND, ROUTES, SAND } from '../theme.js';
 
+const SMS_NUMBER = '+1 833-633-6162';
+const SMS_NUMBER_TEL = '+18336336162';
+const APP_NAME = 'APPtivity';
+
 function Section({ title, children }) {
   return (
     <section
@@ -85,10 +89,12 @@ export default function SmsOptIn() {
 
       <main style={{ maxWidth: '48rem', margin: '0 auto', padding: '2.5rem 1.25rem 3rem' }}>
         <h1 style={{ margin: 0, fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', fontWeight: 700, color: BRAND }}>
-          APPtivity SMS Notifications
+          {APP_NAME} SMS Notifications
         </h1>
         <p style={{ margin: '0.75rem 0 0', fontSize: '1rem', lineHeight: 1.6, color: 'rgba(31, 77, 58, 0.8)' }}>
-          How we send text messages, how you opt in, and how you can stop them anytime.
+          {APP_NAME} only sends optional <strong>transactional/service</strong> texts after you opt
+          in by texting <strong>START</strong> or <strong>Y</strong>. Consent happens from your phone
+          — not through a website form.
         </p>
 
         <div
@@ -107,50 +113,69 @@ export default function SmsOptIn() {
               APPtivity is an activity planning application that helps individuals, families, and groups discover
               meaningful activities, plan together, and stay connected around shared experiences.
             </p>
-            <p style={{ margin: 0 }}>
-              Users may choose to receive optional SMS notifications related to their APPtivity account and the
-              groups and activities they join.
-            </p>
           </Section>
 
-          <Section title="How to Opt In">
-            <p style={{ margin: 0 }}>Users opt in by:</p>
+          <Section title="How to Opt In (by text)">
+            <p style={{ margin: 0 }}>Opt in by text — not by a website form:</p>
             <ol style={{ margin: 0, paddingLeft: '1.25rem' }}>
-              <li>Creating an APPtivity account.</li>
-              <li>Providing a mobile phone number during onboarding or in account settings.</li>
               <li>
-                Replying <strong>Y</strong> to the consent text message from APPtivity when prompted.
+                Send <strong>START</strong> or <strong>Y</strong> to{' '}
+                <a href={`sms:${SMS_NUMBER_TEL}?body=START`} style={linkStyle}>
+                  {SMS_NUMBER}
+                </a>
+                .
+              </li>
+              <li>
+                Or reply <strong>Y</strong> to the consent text from APPtivity when prompted after adding your number.
               </li>
             </ol>
             <p style={{ margin: 0 }}>
-              By replying Y, users consent to receive transactional text messages regarding account verification,
-              activity updates, group invitations, and related APPtivity notices.
+              <a
+                href={`sms:${SMS_NUMBER_TEL}?body=START`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '2.75rem',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '0.75rem',
+                  backgroundColor: BRAND,
+                  color: '#fff',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                }}
+              >
+                Open Messages with START
+              </a>
+            </p>
+            <p style={{ margin: 0 }}>
+              By texting START or Y, you agree to receive transactional/service SMS from APPtivity
+              Labs, LLC / {APP_NAME} for: verification and two-factor authentication codes; account
+              notifications; customer care and support replies; delivery and fulfillment notices;
+              event, schedule, and reminder notices; and security alerts. These are not marketing or
+              promotional messages. Consent is not a condition of purchase.
             </p>
           </Section>
 
           <Section title="Messages You May Receive">
-            <p style={{ margin: 0 }}>APPtivity may send messages such as:</p>
             <ul style={{ margin: 0, paddingLeft: '1.25rem' }}>
-              <li>One-time verification and authentication codes</li>
-              <li>Activity and event reminders</li>
-              <li>Group and invitation notices</li>
-              <li>Schedule changes and important activity updates</li>
-              <li>Account and security notifications</li>
+              <li>Verification and two-factor authentication codes</li>
+              <li>Account notifications (group invites, account activity)</li>
+              <li>Customer care and support replies</li>
+              <li>Delivery and fulfillment notices</li>
+              <li>Event, schedule, and reminder notices (activities and group plans)</li>
+              <li>Security alerts</li>
             </ul>
             <p style={{ margin: 0 }}>
-              APPtivity does <strong>not</strong> send promotional or marketing messages without additional consent.
+              APPtivity does <strong>not</strong> send promotional or marketing messages under this consent.
             </p>
           </Section>
 
           <Section title="Message Frequency">
             <p style={{ margin: 0 }}>
               Message frequency varies depending on your account activity, group participation, and notification
-              settings.
+              settings. Message and data rates may apply.
             </p>
-          </Section>
-
-          <Section title="Charges">
-            <p style={{ margin: 0 }}>Message and data rates may apply.</p>
           </Section>
 
           <Section title="Help">
@@ -158,6 +183,11 @@ export default function SmsOptIn() {
               Reply <strong>HELP</strong> for assistance, including consent details, STOP instructions, and links to
               these terms.
             </p>
+            <SampleMessage label="HELP reply example">
+              {APP_NAME} Support: Transactional SMS for verification, account notices, customer care, delivery
+              notices, events/reminders, and security alerts. Msg&amp;data rates may apply. Reply STOP to cancel.
+              Help: hello@apptivity.online · https://goapptivity.com/sms-opt-in
+            </SampleMessage>
           </Section>
 
           <Section title="Opt Out">
@@ -166,20 +196,36 @@ export default function SmsOptIn() {
             </p>
             <p style={{ margin: 0 }}>
               After opting out, one confirmation message will be sent and no further SMS messages will be delivered
-              unless you re-enable SMS in your account and reply <strong>Y</strong> again.
+              unless you text <strong>START</strong> or <strong>Y</strong> again.
             </p>
           </Section>
 
-          <Section title="Sample Consent Message">
+          <Section title="Confirmation after START or Y">
             <SampleMessage label="Example">
-              APPtivity: Reply Y to consent to receive account and activity notifications. Msg&amp;data rates may
+              {APP_NAME}: You’re subscribed to transactional SMS for verification codes, account notifications,
+              customer care, delivery notices, event/schedule reminders, and security alerts. Msg&amp;data rates may
               apply. Reply HELP for help, STOP to cancel. https://goapptivity.com/sms-opt-in
             </SampleMessage>
           </Section>
 
-          <Section title="Sample Notification">
-            <SampleMessage label="Example">
-              APPtivity: Your group hike starts tomorrow at 9:00 AM. View details in the app. Reply STOP or HELP.
+          <Section title="Sample messages (by type)">
+            <SampleMessage label="Verification">
+              {APP_NAME}: Your verification code is 123456. Do not share this code. Reply STOP to cancel.
+            </SampleMessage>
+            <SampleMessage label="Account">
+              {APP_NAME}: Account notice — you were invited to a group. Reply STOP or HELP.
+            </SampleMessage>
+            <SampleMessage label="Customer care">
+              {APP_NAME}: Support update — we received your request. Reply STOP or HELP.
+            </SampleMessage>
+            <SampleMessage label="Delivery">
+              {APP_NAME}: Delivery/fulfillment update — your request status changed. Reply STOP or HELP.
+            </SampleMessage>
+            <SampleMessage label="Events / reminders">
+              {APP_NAME}: Reminder — your group hike starts tomorrow at 9:00 AM. Reply STOP or HELP.
+            </SampleMessage>
+            <SampleMessage label="Security">
+              {APP_NAME}: Security alert — new sign-in detected. Contact hello@apptivity.online if this wasn’t you.
             </SampleMessage>
           </Section>
 
@@ -197,7 +243,7 @@ export default function SmsOptIn() {
               <a href="mailto:hello@apptivity.online" style={linkStyle}>
                 hello@apptivity.online
               </a>
-              .
+              . APPtivity Labs, LLC.
             </p>
           </Section>
         </div>

@@ -1,3 +1,4 @@
+import { trackActivation } from '../observability/index.js';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BRAND, BUTTON_TEXT, NOISE_OVERLAY_SVG, ROUTES, SAND } from '../theme.js';
@@ -88,7 +89,10 @@ export default function Home() {
               </Link>
               <button
                 type="button"
-                onClick={() => setJoinPopoverOpen(true)}
+                onClick={() => {
+                  trackActivation('marketing_cta_clicked', { cta: 'join_code' });
+                  setJoinPopoverOpen(true);
+                }}
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -104,6 +108,7 @@ export default function Home() {
               </button>
               <Link
                 to={ROUTES.CREATE_USER}
+                onClick={() => trackActivation('marketing_cta_clicked', { cta: 'sign_up' })}
                 style={{
                   display: 'block',
                   textAlign: 'center',

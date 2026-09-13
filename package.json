@@ -7,14 +7,22 @@
     "dev": "vite",
     "build": "vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview",
-    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name=apptivity-public"
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name=apptivity-public",
+    "test:e2e:pw": "playwright test",
+    "test:e2e:pw:ui": "playwright test --ui",
+    "playwright:install": "playwright install chromium"
   },
   "dependencies": {
+    "@sentry/react": "^10.73.0",
+    "posthog-js": "^1.426.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.0"
   },
   "devDependencies": {
+    "@playwright/mcp": "^0.0.80",
+    "@playwright/test": "^1.62.1",
     "@vitejs/plugin-react": "^4.3.4",
     "vite": "^6.0.0"
   }
